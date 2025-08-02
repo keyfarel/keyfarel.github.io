@@ -77,6 +77,9 @@
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .scroll-arrow {
@@ -302,6 +305,15 @@
         justify-content: center;
         flex-wrap: wrap;
     }
+
+    .image-placeholder {
+        width: 200px;
+        height: 200px;
+    }
+
+    .image-placeholder i {
+        font-size: 6rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -309,6 +321,7 @@
         font-size: 2rem;
     }
 }
+
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {

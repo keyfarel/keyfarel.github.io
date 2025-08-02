@@ -89,7 +89,13 @@ section {
 
 /* Responsive Layout Adjustments */
 @media (max-width: 768px) {
-    .hero-container,
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        justify-items: center;
+        text-align: center;
+    }
+
     .about-content,
     .contact-content,
     .projects-grid,

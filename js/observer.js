@@ -8,6 +8,7 @@ export function initObserverAnimations() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Stop observing after animation plays once
       }
     });
   }, observerOptions);

@@ -26,21 +26,29 @@ export function initNavbarScrollEffect() {
 }
 
 export function initActiveLinkHighlight() {
-  const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (window.scrollY >= sectionTop - 200) {
-        current = section.getAttribute('id');
+
+  const observerOptions = {
+    rootMargin: '-50% 0px -50% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
       }
     });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
   });
 }

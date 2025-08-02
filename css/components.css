@@ -79,6 +79,14 @@
     width: 100%;
 }
 
+.nav-link.active {
+    color: #ff6b6b;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
 /* Mobile Nav Toggle */
 .nav-toggle {
     display: none;

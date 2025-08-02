@@ -6,8 +6,8 @@ export const navbarData = {
   links: [
     { text: "Home", url: "#home" },
     { text: "About", url: "#about" },
-    { text: "Skills", url: "#skills" },
-    { text: "Projects", url: "#projects" },
+    { text: "Skills", url: "#skill" },
+    { text: "Projects", url: "#project" },
     { text: "Contact", url: "#contact" }
   ]
 };
