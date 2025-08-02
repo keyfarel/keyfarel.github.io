@@ -1,4 +1,4 @@
-// js/modules/abouts/render.js
+// js/modules/about/render.js
 
 import { aboutData } from './data.js';
 

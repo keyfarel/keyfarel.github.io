@@ -1,4 +1,4 @@
-// ===== skills.js =====
+// ===== skill.js =====
 export function initSkillsAnimation() {
   document.addEventListener('DOMContentLoaded', () => {
     const skillItems = document.querySelectorAll('.skill-item');

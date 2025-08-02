@@ -1,4 +1,5 @@
-// ===== index.js =====
+// main.js
+
 import { loadHTMLPartials } from './include.js';
 import { initNavbarToggle, initNavbarScrollEffect, initActiveLinkHighlight } from './navbar.js';
 import { initSmoothScrolling } from './scroll.js';
@@ -8,16 +9,12 @@ import { initCounters } from './counter.js';
 import { initSkillsAnimation } from './skills.js';
 import { initTypingEffect } from './typing.js';
 import { initParallaxEffect } from './parallax.js';
-import { renderAboutSection } from './modules/abouts/render.js';
-import { renderProjects } from './modules/projects/render.js';
+import { initRenderModules } from './modules/render.js';
 
 async function main() {
   try {
-    // First, load all HTML partials
     await loadHTMLPartials();
-    // After loading is complete, initialize all modules
-    renderAboutSection();
-    renderProjects();
+    initRenderModules();
     initNavbarToggle();
     initNavbarScrollEffect();
     initActiveLinkHighlight();

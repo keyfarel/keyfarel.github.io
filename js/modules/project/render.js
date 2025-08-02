@@ -1,8 +1,8 @@
-// js/modules/projects/render.js
+// js/modules/project/render.js
 import { projects } from './data.js';
 
 export function renderProjects() {
-  const container = document.getElementById("projects-grid");
+  const container = document.getElementById("project-grid");
 
   if (!container) return;
 

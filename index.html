@@ -10,26 +10,40 @@
 </head>
 <body>
 <!-- Navigation -->
-<div include-html="partials/navbar.html"></div>
+<nav id="navbar" class="navbar">
+</nav>
 
 <!-- Hero Section -->
 <div include-html="partials/hero.html"></div>
 
 <!-- About Section -->
-<div include-html="partials/about.html"></div>
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div id="about-container"></div>
+    </div>
+</section>
 
 <!-- Skills Section -->
-<div include-html="partials/skills.html"></div>
+<section id="skill" class="skills">
+</section>
 
 <!-- Projects Section -->
-<div include-html="partials/project.html"></div>
+<section id="project" class="projects">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid" id="project-grid"></div>
+    </div>
+</section>
 
 <!-- Contact Section -->
-<div include-html="partials/contact.html"></div>
+<section id="contact" class="contact">
+</section>
 
 <!-- Footer Section -->
-<div include-html="partials/footer.html"></div>
+<footer id="main-footer" class="footer">
+</footer>
 
-<script type="module" src="js/index.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
