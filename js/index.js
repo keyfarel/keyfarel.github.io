@@ -8,13 +8,14 @@ import { initCounters } from './counter.js';
 import { initSkillsAnimation } from './skills.js';
 import { initTypingEffect } from './typing.js';
 import { initParallaxEffect } from './parallax.js';
+import { renderProjects } from './modules/projects/render.js';
 
 async function main() {
   try {
     // First, load all HTML partials
     await loadHTMLPartials();
-
     // After loading is complete, initialize all modules
+    renderProjects();
     initNavbarToggle();
     initNavbarScrollEffect();
     initActiveLinkHighlight();
