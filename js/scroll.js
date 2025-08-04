@@ -12,3 +12,17 @@ export function initSmoothScrolling() {
   });
 }
 
+export function scrollToHashSection() {
+  const hash = window.location.hash;
+  if (hash) {
+    const target = document.querySelector(hash);
+    if (target) {
+      // Wait for a short moment to ensure all dynamic content is rendered and positioned
+      // This might need adjustment based on content loading times
+      setTimeout(() => {
+        const offsetTop = target.offsetTop - 70; // Adjust for fixed header
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }, 100); // 100ms delay, adjust if needed
+    }
+  }
+}

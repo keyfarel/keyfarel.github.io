@@ -1,0 +1,34 @@
+/* Contact Section */
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.contact-info p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.contact-details {
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.contact-item i {
+    width: 20px;
+    margin-right: 1rem;
+    color: #ff6b6b;
+}
+
+.contact-item a {
+    color: inherit;
+    text-decoration: none;
+}

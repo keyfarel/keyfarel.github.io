@@ -35,6 +35,17 @@ export function initActiveLinkHighlight() {
   };
 
   const observer = new IntersectionObserver(entries => {
+    // Handle the case when at the very top of the page (Home section)
+    if (window.scrollY === 0) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#home') {
+          link.classList.add('active');
+        }
+      });
+      return; // Exit early as Home is handled
+    }
+
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');

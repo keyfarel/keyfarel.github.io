@@ -4,7 +4,7 @@ export const navbarData = {
     url: "#home"
   },
   links: [
-    { text: "Home", url: "#home" },
+        { text: "Home", url: "#hero" },,
     { text: "About", url: "#about" },
     { text: "Skills", url: "#skill" },
     { text: "Projects", url: "#project" },

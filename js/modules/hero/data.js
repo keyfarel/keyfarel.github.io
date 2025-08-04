@@ -1,25 +1,14 @@
-// js/modules/hero/data.js
-
 export const heroData = {
-  greeting: "Hi, I'm",
-  typing_text: ["Key Firdausi", "a Full Stack Developer", "a Web Creator"],
-  subtitle: "Full Stack Developer",
-  description: "I create beautiful and functional web applications that provide exceptional user experiences.",
-  buttons: [
-    {
-      text: "View My Work",
-      url: "#projects",
-      class: "btn btn-primary"
+    title: "Hi, I'm Key Firdausi Alfarel",
+    subtitle: "I'm a ", // The typing effect will be appended here
+    description: "I build modern, responsive, and engaging web experiences from front to back. Let's create something amazing together.",
+    primary_button: {
+        text: "View My Work",
+        link: "#project"
     },
-    {
-      text: "Get In Touch",
-      url: "#contact",
-      class: "btn btn-secondary"
-    }
-  ],
-  image: {
-    src: "",
-    alt: "Hero Image",
-    placeholderIcon: "fas fa-user-circle"
-  }
+    secondary_button: {
+        text: "Contact Me",
+        link: "#contact"
+    },
+    icon: "fas fa-code"
 };

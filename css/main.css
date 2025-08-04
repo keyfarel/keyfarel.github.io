@@ -1,5 +1,9 @@
 @import url('./base.css');
 @import url('./layout.css');
-@import url('./components.css');
-@import url('./pages.css');
+@import url('component.css');
 @import url('./utilities.css');
+@import url('pages/hero.css');
+@import url('pages/about.css');
+@import url('pages/skills.css');
+@import url('pages/projects.css');
+@import url('pages/contact.css');

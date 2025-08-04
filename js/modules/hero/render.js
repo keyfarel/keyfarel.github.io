@@ -1,43 +1,29 @@
-// js/modules/hero/render.js
-
 import { heroData } from './data.js';
 
 export function renderHeroSection() {
-  const container = document.getElementById("home");
-  if (!container) return;
+    const heroSection = document.getElementById('hero');
+    if (!heroSection) return;
 
-  // Dynamically create the buttons
-  const buttonsHTML = heroData.buttons.map(btn => `
-    <a href="${btn.url}" class="btn ${btn.class}">${btn.text}</a>
-  `).join('');
-
-  // Use a real image if src is provided, otherwise use the placeholder icon
-  const imageHTML = heroData.image.src
-    ? `<img src="${heroData.image.src}" alt="${heroData.image.alt}">`
-    : `<div class="image-placeholder"><i class="${heroData.image.placeholderIcon}"></i></div>`;
-
-  // Assemble the full hero section HTML
-  const fullHTML = `
-    <div class="hero-background"></div>
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          ${heroData.greeting} <span class="highlight" id="typing-target"></span>
-        </h1>
-        <p class="hero-subtitle">${heroData.subtitle}</p>
-        <p class="hero-description">${heroData.description}</p>
-        <div class="hero-buttons">
-          ${buttonsHTML}
+    heroSection.innerHTML = `
+        <div class="hero-background"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">${heroData.title}</h1>
+                <p class="hero-subtitle">${heroData.subtitle}<span id="typing-effect"></span></p>
+                <p class="hero-description">${heroData.description}</p>
+                <div class="hero-buttons">
+                    <a href="${heroData.primary_button.link}" class="btn btn-primary">${heroData.primary_button.text}</a>
+                    <a href="${heroData.secondary_button.link}" class="btn btn-secondary">${heroData.secondary_button.text}</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <i class="${heroData.icon}"></i>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="hero-image">
-        ${imageHTML}
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-arrow"></div>
-    </div>
-  `;
-
-  container.innerHTML = fullHTML;
+        <a href="#about" class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </a>
+    `;
 }
