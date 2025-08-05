@@ -89,6 +89,10 @@ section {
 
 /* Responsive Layout Adjustments */
 @media (max-width: 768px) {
+    section {
+        padding: 60px 0; /* Reduced padding for mobile */
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -102,6 +106,14 @@ section {
     .skills-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .contact-form {
+        order: -1; /* Place form above contact info on mobile */
+    }
+
+    .contact-info {
+        order: 1; /* Ensure contact info comes after form on mobile */
     }
 
     .about-stats {

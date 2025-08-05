@@ -9,8 +9,8 @@ export const contactData = {
   details: [
     {
       icon: "fas fa-envelope",
-      text: "keyfarel645@email.com",
-      link: "mailto:keyfarel645@email.com"
+      text: "keyfarel645@gmail.com",
+      link: "mailto:keyfarel645@gmail.com"
     },
     {
       icon: "fas fa-phone",
@@ -30,7 +30,7 @@ export const contactData = {
     },
     {
       icon: "fab fa-github",
-      url: "#"
+      url: "https://github.com/keyfarel"
     },
     {
       icon: "fab fa-twitter",
