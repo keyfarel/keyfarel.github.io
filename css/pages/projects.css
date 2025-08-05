@@ -1,7 +1,18 @@
 /* Projects Section */
 .projects {
     background-color: var(--bg-secondary);
-    /* Background is now inherited from the body */
+    position: relative; /* Needed for the parallax background */
+    overflow: hidden; /* Hide the overflowing parallax background */
+}
+
+.parallax-bg {
+    position: absolute;
+    top: -50%; /* Start higher to have room to move */
+    left: 0;
+    width: 100%;
+    height: 200%; /* Make it much taller than the section */
+    background-color: var(--bg-primary); /* Use the other background color for contrast */
+    z-index: -1; /* Place it behind the content */
 }
 
 .project-image {

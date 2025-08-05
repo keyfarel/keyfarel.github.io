@@ -5,7 +5,7 @@ export function renderProjects() {
     if (!projectSection) return;
 
     const projectsHTML = projectData.projects.map(project => `
-        <div class="project-card">
+        <div class="project-card reveal reveal-zoom">
             <div class="project-image">
                 <img src="${project.imageUrl}" alt="${project.title}">
                 <div class="project-overlay">
@@ -26,9 +26,10 @@ export function renderProjects() {
     `).join('');
 
     projectSection.innerHTML = `
+        <div class="parallax-bg" data-parallax-speed="0.5"></div>
         <div class="container">
-            <h2 class="section-title animate fade-in-down">${projectData.title}</h2>
-            <div class="projects-grid stagger-children zoom-in">
+            <h2 class="section-title reveal reveal-up">${projectData.title}</h2>
+            <div class="projects-grid reveal reveal-stagger">
                 ${projectsHTML}
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { initNavbarToggle, initNavbarScrollEffect, initActiveLinkHighlight } from './navbar.js';
 import { initSmoothScrolling, scrollToHashSection } from './scroll.js';
-import { initObserverAnimations } from './observer.js';
+import { initScrollAnimations } from './observer.js';
 import { initContactForm } from './form.js';
 import { initCounters } from './counter.js';
 import { initInteractiveSkills } from './skills.js';
@@ -28,7 +28,7 @@ async function main() {
     initNavbarScrollEffect();
     initActiveLinkHighlight();
     initSmoothScrolling();
-    initObserverAnimations();
+    initScrollAnimations();
     initContactForm();
     initCounters();
     initInteractiveSkills();

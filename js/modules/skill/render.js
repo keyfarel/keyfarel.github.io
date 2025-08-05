@@ -16,7 +16,7 @@ export function renderSkillsSection() {
 
     // Kembalikan HTML untuk satu kategori penuh
     return `
-      <div class="skill-category">
+      <div class="skill-category reveal reveal-up">
         <h3>${category.name}</h3>
         <div class="skill-items">
           ${itemsHTML}
@@ -28,8 +28,8 @@ export function renderSkillsSection() {
   // Rakit semua bagian menjadi HTML utuh
   const fullHTML = `
     <div class="container">
-      <h2 class="section-title animate fade-in-down">${skillsData.title}</h2>
-      <div class="skills-grid stagger-children">
+      <h2 class="section-title reveal reveal-up">${skillsData.title}</h2>
+      <div class="skills-grid reveal reveal-stagger">
         ${categoriesHTML}
       </div>
     </div>

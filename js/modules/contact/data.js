@@ -20,13 +20,13 @@ export const contactData = {
     {
       icon: "fas fa-map-marker-alt",
       text: "Malang, Jawa Timur, Indonesia",
-      link: "#"
+      link: "https://maps.app.goo.gl/cZEHe3yXUASn3d356"
     }
   ],
   socials: [
     {
       icon: "fab fa-linkedin",
-      url: "#"
+      url: "https://linkedin.com/in/key-firdausi-alfarel-566616290"
     },
     {
       icon: "fab fa-github",

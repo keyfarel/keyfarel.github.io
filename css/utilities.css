@@ -1,164 +1,42 @@
 /* Text highlight */
 .highlight {
-    color: #ffd93d;
+    color: var(--accent-primary);
 }
 
-/* Animations */
-@keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
-        transform: rotate(-45deg) translateY(0);
-    }
-    40% {
-        transform: rotate(-45deg) translateY(-10px);
-    }
-    60% {
-        transform: rotate(-45deg) translateY(-5px);
-    }
-}
+/* ===================================
+   Animation & Reveal System
+=================================== */
 
-/* Keyframes for Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Animation Utility Classes */
-.animate {
-    opacity: 0; /* Start hidden */
-}
-
-.animate.visible {
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-}
-
-.animate.fade-in-up.visible {
-    animation-name: fadeInUp;
-}
-
-.animate.fade-in-down.visible {
-    animation-name: fadeInDown;
-}
-
-.animate.fade-in-left.visible {
-    animation-name: fadeInLeft;
-}
-
-.animate.fade-in-right.visible {
-    animation-name: fadeInRight;
-}
-
-.animate.zoom-in.visible {
-    animation-name: zoomIn;
-}
-
-/* Staggered Animations */
-.stagger-children > * {
+/* Base state for all reveal elements */
+.reveal {
     opacity: 0;
+    transition: all 1.5s cubic-bezier(0.2, 1, 0.2, 1); /* Smooth, fast-out transition */
 }
 
-.stagger-children.visible > * {
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-    animation-name: fadeInUp; /* Default stagger animation */
+/* Modifier classes for different starting positions */
+.reveal-up {
+    transform: translateY(50px);
 }
 
-.stagger-children.zoom-in.visible > * {
-    animation-name: zoomIn;
-}
-
-/* Add delays to each child */
-.stagger-children.visible > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children.visible > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children.visible > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children.visible > *:nth-child(4) { animation-delay: 0.4s; }
-.stagger-children.visible > *:nth-child(5) { animation-delay: 0.5s; }
-.stagger-children.visible > *:nth-child(6) { animation-delay: 0.6s; }
-/* Add more if needed */
-
-
-/* Animation Classes */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.slide-in-left {
-    opacity: 0;
+.reveal-left {
     transform: translateX(-50px);
-    transition: all 0.6s ease;
 }
 
-.slide-in-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.slide-in-right {
-    opacity: 0;
+.reveal-right {
     transform: translateX(50px);
-    transition: all 0.6s ease;
 }
 
-.slide-in-right.visible {
+.reveal-zoom {
+    transform: scale(0.9);
+}
+
+/* The state when the element becomes visible */
+.reveal.visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: none; /* Resets transform to its default (translate(0,0), scale(1)) */
+}
+
+/* Staggering animation for children */
+.reveal-stagger.visible > * {
+    transition-delay: var(--stagger-delay, 0s);
 }

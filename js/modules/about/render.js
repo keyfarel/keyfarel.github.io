@@ -13,15 +13,15 @@ export function renderAboutSection() {
 
     aboutSection.innerHTML = `
         <div class="container">
-            <h2 class="section-title animate fade-in-down">${aboutData.title}</h2>
-            <div class="about-content animate fade-in-up">
-                <div class="about-text">
+            <h2 class="section-title reveal reveal-up">${aboutData.title}</h2>
+            <div class="about-content">
+                <div class="about-text reveal reveal-left">
                     <p>${aboutData.description}</p>
                     <div class="about-stats">
                         ${statsHTML}
                     </div>
                 </div>
-                <div class="about-image">
+                <div class="about-image reveal reveal-right">
                     <img src="${aboutData.imageUrl}" alt="About Me Image">
                 </div>
             </div>

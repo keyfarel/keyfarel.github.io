@@ -1,20 +1,19 @@
+// Fungsi Utama
 export function initContactForm() {
   const contactForm = document.getElementById('contact-form');
-  if (!contactForm) return; // Ensure form exists
+  if (!contactForm) return;
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    clearErrors(); // Clear previous errors
+    clearErrors();
 
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
+    const name = contactForm.querySelector('#name').value;
+    const email = contactForm.querySelector('#email').value;
+    const subject = contactForm.querySelector('#subject').value;
+    const message = contactForm.querySelector('#message').value;
 
     let isValid = true;
 
-    // Validate Name
     if (!name) {
       displayError('name', 'Name is required.');
       isValid = false;
@@ -29,7 +28,7 @@ export function initContactForm() {
       isValid = false;
     }
 
-    // Validate Email
+    // Validasi Email
     if (!email) {
       displayError('email', 'Email is required.');
       isValid = false;
@@ -41,7 +40,7 @@ export function initContactForm() {
       isValid = false;
     }
 
-    // Validate Subject
+    // Validasi Subjek
     if (!subject) {
       displayError('subject', 'Subject is required.');
       isValid = false;
@@ -53,50 +52,75 @@ export function initContactForm() {
       isValid = false;
     }
 
-    // Validate Message
+    // Validasi Pesan
     if (!message) {
       displayError('message', 'Message is required.');
       isValid = false;
     } else if (message.length < 10) {
       displayError('message', 'Message must be at least 10 characters long.');
       isValid = false;
-    } else if (message.length > 500) { // Assuming max 500 for message
+    } else if (message.length > 500) {
       displayError('message', 'Message cannot exceed 500 characters.');
       isValid = false;
     }
 
     if (isValid) {
-      // If using Formspree, you would submit the form here
-      // contactForm.submit(); // Uncomment this line when integrating Formspree
-
-      showNotification('Message sent successfully! I will get back to you soon.', 'success');
-      contactForm.reset();
-      // Reset character counters after successful submission
-      updateCharCount(document.getElementById('name'), 50);
-      updateCharCount(document.getElementById('email'), 100);
-      updateCharCount(document.getElementById('subject'), 100);
-      updateCharCount(document.getElementById('message'), 500);
-
-      // Disable submit button temporarily
+      const formData = new FormData(contactForm);
       const submitButton = contactForm.querySelector('button[type="submit"]');
-      if (submitButton) {
-        submitButton.disabled = true;
-        setTimeout(() => {
-          submitButton.disabled = false;
-        }, 3000); // Re-enable after 3 seconds
-      }
+
+      if (submitButton) submitButton.disabled = true;
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(response => {
+          if (response.ok) {
+            showNotification('Message sent successfully! I will get back to you soon.', 'success');
+            contactForm.reset();
+            contactForm.querySelectorAll('input, textarea').forEach(input => {
+              const maxLength = parseInt(input.dataset.maxLength || (input.id === 'name' ? 50 : input.id === 'email' ? 100 : input.id === 'subject' ? 100 : 500));
+              updateCharCount(input, maxLength);
+            });
+          } else {
+            response.json().then(data => {
+              if (data && data.errors) {
+                const isLimitError = data.errors.some(error =>
+                  error.message && error.message.toLowerCase().includes('inactive')
+                );
+                if (isLimitError) {
+                  showNotification('Maaf, batas pengiriman formulir untuk bulan ini telah tercapai.', 'error');
+                } else {
+                  showNotification(data.errors.map(error => error.message).join(", "), 'error');
+                }
+              } else {
+                showNotification('Oops! Terjadi masalah saat mengirim formulir Anda.', 'error');
+              }
+            });
+          }
+        })
+        .catch(error => {
+          showNotification('Oops! There was a network error.', 'error');
+        })
+        .finally(() => {
+          if (submitButton) {
+            setTimeout(() => {
+              submitButton.disabled = false;
+            }, 1000);
+          }
+        });
     } else {
       showNotification('Please correct the errors in the form.', 'error');
-      // Scroll to the first error field
       const firstErrorField = contactForm.querySelector('.input-error');
       if (firstErrorField) {
         firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        firstErrorField.focus(); // Optionally focus on the field
+        firstErrorField.focus();
       }
     }
   });
 
-  // Add event listeners for real-time validation and character counting
+  // Event listener untuk validasi real-time dan counter karakter
   contactForm.querySelectorAll('input, textarea').forEach(input => {
     const maxLength = parseInt(input.dataset.maxLength || (input.id === 'name' ? 50 : input.id === 'email' ? 100 : input.id === 'subject' ? 100 : 500));
     updateCharCount(input, maxLength);
@@ -104,16 +128,14 @@ export function initContactForm() {
     input.addEventListener('input', () => {
       const fieldName = input.id;
       const errorElement = document.getElementById(`${fieldName}-error`);
-      if (errorElement && errorElement.textContent) { // Only clear if there's an error displayed
+      if (errorElement && errorElement.textContent) {
         clearError(fieldName);
       }
 
-      // Specific filtering for 'name' field
       if (input.id === 'name') {
-        input.value = input.value.replace(/[^a-zA-Z\s]/g, ''); // Allow only letters and spaces
+        input.value = input.value.replace(/[^a-zA-Z\s]/g, '');
       }
 
-      // Truncate input if it exceeds maxLength
       if (input.value.length > maxLength) {
         input.value = input.value.substring(0, maxLength);
       }
@@ -122,15 +144,16 @@ export function initContactForm() {
   });
 }
 
+// Fungsi-Fungsi Helper (diletakkan di file yang sama, di luar export)
 function updateCharCount(inputElement, maxLength) {
   const currentLength = inputElement.value.length;
   const charCountElement = document.getElementById(`${inputElement.id}-char-count`);
   if (charCountElement) {
     charCountElement.textContent = `${currentLength}/${maxLength}`;
     if (currentLength > maxLength) {
-      charCountElement.style.color = '#dc3545'; // Red if over limit
+      charCountElement.style.color = '#dc3545';
     } else {
-      charCountElement.style.color = ''; // Reset color
+      charCountElement.style.color = '';
     }
   }
 }
@@ -144,11 +167,11 @@ function displayError(field, message) {
   const errorElement = document.getElementById(`${field}-error`);
   if (errorElement) {
     errorElement.textContent = message;
-    errorElement.style.display = 'block'; // Make sure it's visible
+    errorElement.style.display = 'block';
   }
   const inputElement = document.getElementById(field);
   if (inputElement) {
-    inputElement.classList.add('input-error'); // Add a class for styling
+    inputElement.classList.add('input-error');
   }
 }
 
