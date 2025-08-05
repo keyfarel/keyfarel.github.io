@@ -65,10 +65,15 @@ export function initContactForm() {
     }
 
     if (isValid) {
-      const formData = new FormData(contactForm);
       const submitButton = contactForm.querySelector('button[type="submit"]');
 
-      if (submitButton) submitButton.disabled = true;
+      // Start loading
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.classList.add('loading');
+      }
+
+      const formData = new FormData(contactForm);
 
       fetch(contactForm.action, {
         method: 'POST',
@@ -76,39 +81,49 @@ export function initContactForm() {
         headers: { 'Accept': 'application/json' }
       })
         .then(response => {
-          if (response.ok) {
-            showNotification('Message sent successfully! I will get back to you soon.', 'success');
-            contactForm.reset();
-            contactForm.querySelectorAll('input, textarea').forEach(input => {
-              const maxLength = parseInt(input.dataset.maxLength || (input.id === 'name' ? 50 : input.id === 'email' ? 100 : input.id === 'subject' ? 100 : 500));
-              updateCharCount(input, maxLength);
-            });
-          } else {
-            response.json().then(data => {
-              if (data && data.errors) {
-                const isLimitError = data.errors.some(error =>
-                  error.message && error.message.toLowerCase().includes('inactive')
-                );
-                if (isLimitError) {
-                  showNotification('Maaf, batas pengiriman formulir untuk bulan ini telah tercapai.', 'error');
-                } else {
-                  showNotification(data.errors.map(error => error.message).join(", "), 'error');
-                }
-              } else {
-                showNotification('Oops! Terjadi masalah saat mengirim formulir Anda.', 'error');
-              }
-            });
+          // Stop loading first
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.classList.remove('loading');
           }
+
+          // Then show notification after a short delay
+          setTimeout(() => {
+            if (response.ok) {
+              showNotification('Message sent successfully! I will get back to you soon.', 'success');
+              contactForm.reset();
+              contactForm.querySelectorAll('input, textarea').forEach(input => {
+                const maxLength = parseInt(input.dataset.maxLength || (input.id === 'name' ? 50 : input.id === 'email' ? 100 : input.id === 'subject' ? 100 : 500));
+                updateCharCount(input, maxLength);
+              });
+            } else {
+              response.json().then(data => {
+                if (data && data.errors) {
+                  const isLimitError = data.errors.some(error =>
+                    error.message && error.message.toLowerCase().includes('inactive')
+                  );
+                  if (isLimitError) {
+                    showNotification('Maaf, batas pengiriman formulir untuk bulan ini telah tercapai.', 'error');
+                  } else {
+                    showNotification(data.errors.map(error => error.message).join(", "), 'error');
+                  }
+                } else {
+                  showNotification('Oops! Terjadi masalah saat mengirim formulir Anda.', 'error');
+                }
+              });
+            }
+          }, 100); // 100ms delay
         })
         .catch(error => {
-          showNotification('Oops! There was a network error.', 'error');
-        })
-        .finally(() => {
+          // Stop loading first
           if (submitButton) {
-            setTimeout(() => {
-              submitButton.disabled = false;
-            }, 1000);
+            submitButton.disabled = false;
+            submitButton.classList.remove('loading');
           }
+          // Then show notification
+          setTimeout(() => {
+            showNotification('Oops! There was a network error.', 'error');
+          }, 100); // 100ms delay
         });
     } else {
       showNotification('Please correct the errors in the form.', 'error');

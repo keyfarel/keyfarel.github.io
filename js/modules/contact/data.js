@@ -38,7 +38,7 @@ export const contactData = {
     },
     {
       icon: "fab fa-instagram",
-      url: "#"
+      url: "https://www.instagram.com/farel_key05"
     }
   ]
 };
