@@ -28,8 +28,8 @@ export function renderSkillsSection() {
   // Rakit semua bagian menjadi HTML utuh
   const fullHTML = `
     <div class="container">
-      <h2 class="section-title">${skillsData.title}</h2>
-      <div class="skills-grid">
+      <h2 class="section-title animate fade-in-down">${skillsData.title}</h2>
+      <div class="skills-grid stagger-children">
         ${categoriesHTML}
       </div>
     </div>

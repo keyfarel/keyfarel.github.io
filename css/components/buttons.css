@@ -12,25 +12,25 @@
 }
 
 .btn-primary {
-    background: #ff6b6b;
-    color: white;
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
 }
 
 .btn-primary:hover {
-    background: #ff5252;
+    background-color: #ffc107; /* A slightly darker gold for hover */
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 10px 20px rgba(255, 217, 61, 0.2);
 }
 
 .btn-secondary {
     background: transparent;
-    color: white;
-    border: 2px solid white;
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
 }
 
 .btn-secondary:hover {
-    background: white;
-    color: #333;
+    background: var(--text-primary);
+    color: var(--bg-primary);
     transform: translateY(-2px);
 }
 

@@ -27,8 +27,8 @@ export function renderProjects() {
 
     projectSection.innerHTML = `
         <div class="container">
-            <h2 class="section-title">${projectData.title}</h2>
-            <div class="projects-grid">
+            <h2 class="section-title animate fade-in-down">${projectData.title}</h2>
+            <div class="projects-grid stagger-children zoom-in">
                 ${projectsHTML}
             </div>
         </div>

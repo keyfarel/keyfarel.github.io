@@ -13,8 +13,8 @@ export function renderAboutSection() {
 
     aboutSection.innerHTML = `
         <div class="container">
-            <h2 class="section-title">${aboutData.title}</h2>
-            <div class="about-content">
+            <h2 class="section-title animate fade-in-down">${aboutData.title}</h2>
+            <div class="about-content animate fade-in-up">
                 <div class="about-text">
                     <p>${aboutData.description}</p>
                     <div class="about-stats">

@@ -2,11 +2,11 @@
 .contact-info h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .contact-info p {
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 2rem;
     line-height: 1.6;
 }
@@ -19,16 +19,21 @@
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .contact-item i {
     width: 20px;
     margin-right: 1rem;
-    color: #ff6b6b;
+    color: var(--accent-primary);
 }
 
 .contact-item a {
-    color: inherit;
+    color: var(--text-secondary);
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--accent-primary);
 }

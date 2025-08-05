@@ -1,6 +1,7 @@
 export const heroData = {
-    title: "Hi, I'm Key Firdausi Alfarel",
-    subtitle: "I'm a ", // The typing effect will be appended here
+    title: "Hi, I'm Key Farel",
+    subtitle_prefix: "I'm a ",
+    subtitle_role: "Fullstack Web Developer",
     description: "I build modern, responsive, and engaging web experiences from front to back. Let's create something amazing together.",
     primary_button: {
         text: "View My Work",

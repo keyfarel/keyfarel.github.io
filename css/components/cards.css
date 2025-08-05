@@ -2,7 +2,7 @@
 .stat {
     text-align: center;
     padding: 1.5rem;
-    background: white;
+    background: var(--bg-primary);
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -13,7 +13,7 @@
 }
 
 .project-card {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);

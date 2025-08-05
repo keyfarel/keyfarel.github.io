@@ -1,0 +1,101 @@
+/* ===================================
+   Skill Details & Interaction
+=================================== */
+
+.skill-item {
+    /* Add transition for the bounce effect */
+    transition: transform 0.2s ease;
+}
+
+/* Bounce animation on click */
+.skill-item.clicked {
+    animation: skill-bounce 0.4s ease-out;
+}
+
+@keyframes skill-bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Skill Detail Box */
+.skill-detail-box {
+    position: absolute;
+    z-index: 10;
+    width: 280px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Initially not interactive */
+}
+
+.skill-detail-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Make it interactive when visible */
+}
+
+/* Arrow pointing to the skill item */
+.skill-detail-box::before {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* Position arrow at the top of the box */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent var(--bg-secondary) transparent;
+}
+
+.skill-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.skill-detail-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+}
+
+.skill-detail-level {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+}
+
+/* Progress Bar Styles */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #555; /* The background of the bar */
+    border-radius: 4px;
+    overflow: hidden; /* Ensures the inner bar has rounded corners */
+    margin-top: 8px;
+}
+
+.progress-bar-inner {
+    width: 0; /* Starts at 0, width will be set by JS */
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 4px;
+    transition: width 0.8s ease-out; /* Smooth animation */
+}
+
+.skill-detail-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}

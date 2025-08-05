@@ -1,4 +1,16 @@
 /* Reset and Base Styles */
+:root {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #2c2c54;
+    --gradient-start: #2c2c54;
+    --gradient-end: #1a1a2e;
+    --accent-primary: #ffd93d;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0b0;
+    --hover-color: rgba(118, 75, 162, 0.3);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,11 +24,13 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     overflow-x: hidden;
 }
 
 /* Base link styling if any, can go here */
 a {
-    /* Example: color: inherit; text-decoration: none; */
+    color: var(--accent-primary);
+    text-decoration: none;
 }

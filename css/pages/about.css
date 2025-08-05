@@ -1,28 +1,30 @@
 /* About Section */
 .about {
-    background: #f8f9fa;
+    background-color: var(--bg-secondary);
+    /* The background is now inherited from the body */
 }
 
 .about-text p {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.8;
 }
 
 .stat h3 {
     font-size: 2rem;
-    color: #ff6b6b;
+    color: var(--accent-primary);
     margin-bottom: 0.5rem;
 }
 
 .stat p {
-    color: #666;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 .about-image img {
     width: 100%;
     border-radius: 15px;
+    border: 1px solid var(--border-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }

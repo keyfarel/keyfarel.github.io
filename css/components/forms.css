@@ -1,9 +1,9 @@
 /* Form Components */
 .contact-form {
-    background: white;
+    background-color: var(--bg-secondary);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 .form-group {
@@ -15,7 +15,9 @@
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid #e9ecef;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     border-radius: 10px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -25,7 +27,7 @@
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #ff6b6b;
+    border-color: var(--accent-primary);
 }
 
 .form-group textarea {
@@ -42,18 +44,18 @@
 }
 
 .error-message {
-    color: #dc3545; /* Red color for error */
+    color: #e74c3c; /* A slightly softer red for errors */
     font-size: 0.875rem;
     display: none; /* Hidden by default, shown by JS when error */
 }
 
 .input-error {
-    border-color: #dc3545 !important; /* Highlight input with error */
+    border-color: #e74c3c !important; /* Highlight input with error */
 }
 
 .char-count {
     font-size: 0.75rem;
-    color: #6c757d;
+    color: var(--text-secondary);
     margin-left: auto; /* Push to the right */
 }
 

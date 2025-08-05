@@ -16,13 +16,8 @@ export function initNavbarToggle() {
 
 export function initNavbarScrollEffect() {
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
+  // Always add the 'scrolled' class to make the navbar visible from the start
+  navbar.classList.add('scrolled');
 }
 
 export function initActiveLinkHighlight() {

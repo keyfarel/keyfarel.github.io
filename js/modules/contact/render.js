@@ -24,9 +24,9 @@ export function renderContactSection() {
   // Merakit semua bagian menjadi HTML utuh
   const fullHTML = `
     <div class="container">
-      <h2 class="section-title">${contactData.title}</h2>
+      <h2 class="section-title animate fade-in-down">${contactData.title}</h2>
       <div class="contact-content">
-        <div class="contact-info">
+        <div class="contact-info animate fade-in-left">
           <h3>${contactData.info.heading}</h3>
           <p>${contactData.info.paragraph}</p>
           <div class="contact-details">
@@ -36,7 +36,7 @@ export function renderContactSection() {
             ${socialsHTML}
           </div>
         </div>
-        <form class="contact-form" id="contact-form" novalidate>
+        <form class="contact-form animate fade-in-right" id="contact-form" novalidate>
           <div class="form-group">
             <input type="text" id="name" name="name" placeholder="Your Name" required>
             <div class="validation-feedback">

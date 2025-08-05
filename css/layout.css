@@ -12,7 +12,7 @@
     width: 100%;
     z-index: 1000;
     transition: all 0.3s ease;
-    background-color: white;
+    background-color: transparent; /* Initially transparent */
 }
 
 .nav-container {
@@ -28,7 +28,16 @@
 /* Section Layout */
 section {
     padding: 100px 0;
+    position: relative; /* Diperlukan agar bisa menumpuk di atas sticky */
+    /* background-color is now inherited from body */
 }
+
+.hero {
+    padding: 0; /* Hero tidak butuh padding ini */
+    background-color: transparent; /* Biarkan background diatur oleh .hero-background */
+    /*z-index: 0;*/
+}
+
 
 /* Grid Layouts */
 .hero-container {
@@ -81,10 +90,11 @@ section {
 
 /* Footer */
 .footer {
-    background: #333;
-    color: white;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
     text-align: center;
     padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
 }
 
 /* Responsive Layout Adjustments */

@@ -1,49 +1,85 @@
+// initHeroAnimation.js
+
 export function initHeroAnimation() {
     const heroContainer = document.querySelector('.hero-container');
     const scrollIndicator = document.querySelector('.scroll-indicator');
     const heroBackground = document.querySelector('.hero-background');
     const heroSection = document.querySelector('.hero');
 
-    if (!heroContainer || !scrollIndicator || !heroBackground || !heroSection) return;
+    if (!heroContainer || !scrollIndicator || !heroBackground || !heroSection) {
+        return;
+    }
 
-    window.addEventListener('scroll', () => {
+    // Fungsi ini akan dipanggil setiap kali ada event scroll
+    const handleScrollAnimation = () => {
         const scrollPosition = window.pageYOffset;
         const heroHeight = heroSection.offsetHeight;
-        const navbar = document.getElementById('navbar');
-        const navbarHeight = navbar ? navbar.offsetHeight : 0; // Get navbar height, default to 0 if not found
+        const isMobile = window.innerWidth <= 768; // Sesuaikan dengan breakpoint CSS Anda
 
-        // --- Opacity for Content and Indicator (fades over a longer distance) ---
-        // Let's say content fades out over 80% of the hero section's height
-        let contentOpacity = 1 - (scrollPosition / (heroHeight * 0.8));
-        contentOpacity = Math.max(0, contentOpacity); // Clamp at 0
-        contentOpacity = Math.min(1, contentOpacity); // Clamp at 1
+        let opacity = 1;
+        let transformY = 0;
 
-        heroContainer.style.opacity = contentOpacity;
-        scrollIndicator.style.opacity = contentOpacity;
+        if (isMobile) {
+            // ===== LOGIKA BARU KHUSUS MOBILE =====
 
-        // --- Opacity for Background (fades out very quickly) ---
-        // Let's make the background fade out over the first 100px of scroll
-        const backgroundFadeDistance = 100;
-        let backgroundOpacity = 1 - (scrollPosition / backgroundFadeDistance);
-        backgroundOpacity = Math.max(0, backgroundOpacity); // Clamp at 0
-        backgroundOpacity = Math.min(1, backgroundOpacity); // Clamp at 1
+            // Biarkan parallax tetap berjalan dari awal untuk efek kedalaman
+            const parallaxSpeed = 0.3; // Kecepatan paralaks bisa dibuat lebih lambat di mobile
+            transformY = scrollPosition * parallaxSpeed;
 
-        heroBackground.style.opacity = backgroundOpacity;
+            // Tentukan kapan fade harus dimulai dan berapa lama durasinya
+            const startFadePosition = heroHeight * 0.60; // Mulai fade setelah 60% konten di-scroll
+            const fadeDuration = heroHeight - startFadePosition; // Fade akan terjadi di sisa 40% terakhir
 
-        // --- Transform (Movement) for ALL elements ---
-        // Move all elements (content, indicator, and background) up at the exact same speed as the scroll
-        // This counteracts the 'sticky' positioning and makes them look like they're scrolling normally.
-        const transformY = -scrollPosition;
+            if (scrollPosition >= startFadePosition) {
+                // Jika sudah masuk zona fade, hitung opasitasnya
+                const scrollInFadeZone = scrollPosition - startFadePosition;
+                opacity = 1 - (scrollInFadeZone / fadeDuration);
+            } else {
+                // Jika belum, opasitas tetap 1 (terlihat penuh)
+                opacity = 1;
+            }
 
-        heroContainer.style.transform = `translateY(${transformY}px)`;
-        scrollIndicator.style.transform = `translateY(${transformY}px)`;
-        heroBackground.style.transform = `translateY(${transformY}px)`; // Apply transform to background
+        } else {
+            // ===== LOGIKA LAMA UNTUK DESKTOP =====
 
-        // Fallback: Ensure elements are completely hidden if scrolled past the hero section
-        if (scrollPosition > heroHeight) {
-            heroContainer.style.opacity = 0;
-            scrollIndicator.style.opacity = 0;
-            heroBackground.style.opacity = 0;
+            // Efek Paralaks untuk Desktop
+            const parallaxSpeed = 0.5;
+            transformY = scrollPosition * parallaxSpeed;
+
+            // Efek Opasitas untuk Desktop (menggunakan logika fade yang sudah ada)
+            // Memisahkan konten dan background tetap ide yang bagus
+            const contentFadeDistance = heroHeight * 0.9;
+            const backgroundFadeDistance = heroHeight * 1.5;
+
+            const contentOpacity = Math.max(0, 1 - (scrollPosition / contentFadeDistance));
+            const backgroundOpacity = Math.max(0, 1 - (scrollPosition / backgroundFadeDistance));
+
+            // Terapkan opasitas terpisah untuk desktop
+            heroContainer.style.opacity = contentOpacity;
+            scrollIndicator.style.opacity = contentOpacity;
+            heroBackground.style.opacity = backgroundOpacity;
+
+            // Terapkan transform dan keluar dari fungsi lebih awal
+            heroBackground.style.transform = `translateY(${transformY}px)`;
+            heroContainer.style.transform = `translateY(${transformY}px)`;
+            return;
         }
-    });
+
+        // --- TERAPKAN NILAI UNTUK MOBILE ---
+        // (Kode ini hanya akan berjalan di mobile karena desktop sudah 'return' di atas)
+
+        const finalOpacity = Math.max(0, opacity); // Pastikan tidak kurang dari 0
+
+        // Terapkan opasitas yang sama ke semua elemen hero di mobile
+        heroContainer.style.opacity = finalOpacity;
+        scrollIndicator.style.opacity = finalOpacity;
+        heroBackground.style.opacity = finalOpacity;
+
+        // Terapkan transform
+        heroBackground.style.transform = `translateY(${transformY}px)`;
+        heroContainer.style.transform = `translateY(${transformY}px)`;
+    };
+
+    // Tambahkan event listener ke window
+    window.addEventListener('scroll', handleScrollAnimation, { passive: true });
 }

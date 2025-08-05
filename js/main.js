@@ -5,7 +5,7 @@ import { initSmoothScrolling, scrollToHashSection } from './scroll.js';
 import { initObserverAnimations } from './observer.js';
 import { initContactForm } from './form.js';
 import { initCounters } from './counter.js';
-import { initSkillsAnimation } from './skills.js';
+import { initInteractiveSkills } from './skills.js';
 import { initTypingEffect } from './typing.js';
 import { initParallaxEffect } from './parallax.js';
 import { initHeroAnimation } from './hero-animation.js';
@@ -31,7 +31,7 @@ async function main() {
     initObserverAnimations();
     initContactForm();
     initCounters();
-    initSkillsAnimation();
+    initInteractiveSkills();
     initTypingEffect();
     initParallaxEffect();
     initHeroAnimation();
