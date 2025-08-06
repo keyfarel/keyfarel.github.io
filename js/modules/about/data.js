@@ -1,7 +1,5 @@
 // js/modules/about/data.js
 
-import { BASE_PATH } from '../../config.js';
-
 export const aboutData = {
     title: 'About Me',
     description: `Hello! I'm Key, a passionate and detail-oriented developer with a love for creating elegant and efficient solutions. My journey in the world of programming began with a curiosity for how things work, and it has since evolved into a full-fledged passion for building beautiful and functional web applications.`,
@@ -19,5 +17,5 @@ export const aboutData = {
             label: 'Happy Clients'
         }
     ],
-    imageUrl: 'assets/placeholder/placeholder.svg' // Replace with your actual image path
+    imageUrl: `assets/placeholder/placeholder.svg`, // Replace with your actual image path
 };

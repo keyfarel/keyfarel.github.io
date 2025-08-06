@@ -1,5 +1,4 @@
 // js/modules/project/data.js
-import { BASE_PATH } from '../../config.js';
 
 export const projectData = {
     title: 'Featured Projects',
