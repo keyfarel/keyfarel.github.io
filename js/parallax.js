@@ -1,35 +1,37 @@
 export function initParallaxEffect() {
-  const parallaxElements = document.querySelectorAll('[data-parallax-speed]');
+  const heroSection = document.getElementById('hero');
+  if (!heroSection) return;
+
+  // The parallax effect ONLY applies to the content container.
+  // The background is left alone to scroll normally.
+  const contentContainer = heroSection.querySelector('.hero-container');
+  if (!contentContainer) return;
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
+    const heroHeight = heroSection.offsetHeight;
 
-    parallaxElements.forEach(el => {
-      const speed = parseFloat(el.dataset.parallaxSpeed) || 0.5;
-      const fade = el.dataset.parallaxFade === 'true';
-      const elementTop = el.getBoundingClientRect().top + scrollY;
-      const elementHeight = el.offsetHeight;
-      const viewportHeight = window.innerHeight;
+    // Define the point where the content starts to fade and move up.
+    // Let's use 65% of the hero's height as the trigger point.
+    const animationStartPoint = heroHeight * 0.65;
 
-      // Calculate the vertical movement
-      const transformY = (scrollY - elementTop) * speed;
+    // If we are scrolling before the trigger point, do nothing. Let it scroll normally.
+    if (scrollY < animationStartPoint) {
+      contentContainer.style.opacity = 1;
+      contentContainer.style.transform = 'translateY(0px)';
+      return;
+    }
 
-      // Calculate opacity for fade effect
-      let opacity = 1;
-      if (fade) {
-        // Start fading when the bottom of the element is halfway up the screen
-        const fadeStart = elementTop + elementHeight - viewportHeight / 2;
-        if (scrollY > fadeStart) {
-          const fadeDistance = (scrollY - fadeStart) / (viewportHeight / 2);
-          opacity = Math.max(0, 1 - fadeDistance);
-        }
-      }
+    // If we are past the trigger point, calculate the animation progress.
+    const animationDuration = heroHeight - animationStartPoint;
+    const progress = Math.min(1, (scrollY - animationStartPoint) / animationDuration);
 
-      // Apply the styles
-      el.style.transform = `translateY(${transformY}px)`;
-      if (fade) {
-        el.style.opacity = opacity;
-      }
-    });
+    // Animate the content's opacity to fade it out.
+    const opacity = 1 - progress;
+    contentContainer.style.opacity = Math.max(0, opacity);
+
+    // Optionally, move the content up slightly as it fades.
+    const transformY = progress * 50; // Move up by a small amount (e.g., 50px)
+    contentContainer.style.transform = `translateY(-${transformY}px)`;
   });
 }
