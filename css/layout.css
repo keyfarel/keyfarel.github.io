@@ -54,14 +54,24 @@ section {
 
 .about-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 2fr; /* Image left, text right */
     gap: 4rem;
-    align-items: center;
+    /* align-items: center; // Removed to allow stretching */
 }
+
+.about-image-col {
+    order: -1; /* Image in first column */
+}
+
+.about-text-col {
+    order: 0; /* Text in second column */
+}
+
+
 
 .about-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -119,6 +129,16 @@ section {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
+    .about-image-col {
+        order: -1; /* Image on top */
+    }
+
+    .about-text-col {
+        order: 1; /* Text below image */
+    }
+
+    
 
     .contact-form {
         order: -1; /* Place form above contact info on mobile */

@@ -126,7 +126,6 @@ export function initContactForm() {
           }, 100); // 100ms delay
         });
     } else {
-      showNotification('Please correct the errors in the form.', 'error');
       const firstErrorField = contactForm.querySelector('.input-error');
       if (firstErrorField) {
         firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -141,6 +140,8 @@ export function initContactForm() {
     updateCharCount(input, maxLength);
 
     input.addEventListener('input', () => {
+      hideNotification(); // Hide notification on new input
+
       const fieldName = input.id;
       const errorElement = document.getElementById(`${fieldName}-error`);
       if (errorElement && errorElement.textContent) {
@@ -157,6 +158,12 @@ export function initContactForm() {
       updateCharCount(input, maxLength);
     });
   });
+
+  // Listener to close the notification
+  const closeButton = document.getElementById('notification-close');
+  if (closeButton) {
+    closeButton.addEventListener('click', hideNotification);
+  }
 }
 
 // Fungsi-Fungsi Helper (diletakkan di file yang sama, di luar export)
@@ -213,29 +220,27 @@ function clearErrors() {
 }
 
 function showNotification(message, type) {
-  const existing = document.querySelector('.notification');
-  if (existing) existing.remove();
+  const notification = document.getElementById('form-notification');
+  const messageEl = document.getElementById('notification-message');
+  const closeButton = document.getElementById('notification-close');
+  if (!notification || !messageEl || !closeButton) return;
 
-  const notification = document.createElement('div');
-  notification.className = `notification ${type}`;
-  notification.textContent = message;
-  notification.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem 1.5rem;
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
-    z-index: 10000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    ${type === 'success' ? 'background: #28a745;' : 'background: #dc3545;'}
-  `;
-  document.body.appendChild(notification);
-  setTimeout(() => notification.style.transform = 'translateX(0)', 100);
+  messageEl.textContent = message;
+  notification.className = `form-notification ${type}`;
+  notification.classList.add('show');
+
+  // Scroll the notification into view for all devices
+  notification.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // Delay focus slightly for reliability after scroll
   setTimeout(() => {
-    notification.style.transform = 'translateX(100%)';
-    setTimeout(() => notification.remove(), 300);
-  }, 5000);
+    closeButton.focus();
+  }, 150); // Increased delay slightly to ensure scroll completes
+}
+
+function hideNotification() {
+  const notification = document.getElementById('form-notification');
+  if (notification) {
+    notification.classList.remove('show');
+  }
 }

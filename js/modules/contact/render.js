@@ -37,6 +37,10 @@ export function renderContactSection() {
           </div>
         </div>
         <form action="https://formspree.io/f/myzpnplp" method="POST" class="contact-form reveal reveal-right" id="contact-form" novalidate>
+          <div id="form-notification" class="form-notification" tabindex="-1" aria-live="assertive">
+            <span id="notification-message"></span>
+            <button type="button" id="notification-close" class="notification-close" aria-label="Close">&times;</button>
+          </div>
           <div class="form-group">
             <input type="text" id="name" name="name" placeholder="Your Name" required>
             <div class="validation-feedback">
@@ -65,6 +69,7 @@ export function renderContactSection() {
               <span class="char-count" id="message-char-count">0/500</span>
             </div>
           </div>
+          <div id="form-notification" class="form-notification"></div>
           <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
       </div>
