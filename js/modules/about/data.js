@@ -17,5 +17,5 @@ export const aboutData = {
             label: 'Happy Clients'
         }
     ],
-    imageUrl: `assets/placeholder/placeholder.svg`, // Replace with your actual image path
+    imageUrl: `assets/placeholder/placeholder.svg`,
 };

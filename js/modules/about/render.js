@@ -1,5 +1,4 @@
 import { aboutData } from './data.js';
-import { BASE_PATH } from '../../config.js';
 
 export function renderAboutSection() {
     const aboutSection = document.getElementById('about');
@@ -23,7 +22,7 @@ export function renderAboutSection() {
                     </div>
                 </div>
                 <div class="about-image about-image-col reveal reveal-right">
-                    <img src="${BASE_PATH}${aboutData.imageUrl}" alt="About Me Image">
+                    <img src="${aboutData.imageUrl}" alt="About Me Image">
                 </div>
             </div>
         </div>
