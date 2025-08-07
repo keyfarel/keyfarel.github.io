@@ -32,19 +32,28 @@ function showSkillDetail(skillItem) {
     const detailBox = document.createElement('div');
     detailBox.className = 'skill-detail-box';
     detailBox.innerHTML = `
-        <div class="skill-detail-header">
+        <div class="skill-detail-section skill-detail-tech">
             <h4>${skill.name}</h4>
+        </div>
+        <div class="skill-detail-section skill-detail-level-section">
             <span class="skill-detail-level">${skill.level}</span>
         </div>
-        <div class="progress-bar">
-            <div class="progress-bar-inner"></div>
+        <div class="skill-detail-section skill-detail-bar-section">
+            <div class="progress-bar">
+                <div class="progress-bar-inner"></div>
+            </div>
         </div>
-        <p class="skill-detail-description">${skill.description}</p>
+        <div class="skill-detail-section skill-detail-description-section">
+            <p class="skill-detail-description">${skill.description}</p>
+        </div>
     `;
 
     // --- Position and Show ---
     document.body.appendChild(detailBox);
-    positionDetailBox(skillItem, detailBox);
+    // Only apply JavaScript positioning for larger screens
+    if (window.innerWidth > 768) {
+        positionDetailBox(skillItem, detailBox);
+    }
 
     // Make it visible with an animation
     // Use requestAnimationFrame to ensure the element is in the DOM before adding the class
@@ -73,21 +82,24 @@ function showSkillDetail(skillItem) {
  * @param {HTMLElement} detailBox - The detail box to position.
  */
 function positionDetailBox(skillItem, detailBox) {
-    const itemRect = skillItem.getBoundingClientRect();
-    const bodyRect = document.body.getBoundingClientRect();
+    // Only apply JavaScript positioning for larger screens
+    if (window.innerWidth > 768) {
+        const itemRect = skillItem.getBoundingClientRect();
+        const bodyRect = document.body.getBoundingClientRect();
 
-    // Position the box centered below the item
-    let top = itemRect.bottom + window.scrollY + 10; // 10px gap
-    let left = itemRect.left + window.scrollX + (itemRect.width / 2) - (detailBox.offsetWidth / 2);
+        // Position the box centered below the item
+        let top = itemRect.bottom + window.scrollY + 10; // 10px gap
+        let left = itemRect.left + window.scrollX + (itemRect.width / 2) - (detailBox.offsetWidth / 2);
 
-    // Adjust if it goes off-screen
-    if (left < 10) left = 10;
-    if (left + detailBox.offsetWidth > bodyRect.width - 10) {
-        left = bodyRect.width - detailBox.offsetWidth - 10;
+        // Adjust if it goes off-screen
+        if (left < 10) left = 10;
+        if (left + detailBox.offsetWidth > bodyRect.width - 10) {
+            left = bodyRect.width - detailBox.offsetWidth - 10;
+        }
+
+        detailBox.style.top = `${top}px`;
+        detailBox.style.left = `${left}px`;
     }
-
-    detailBox.style.top = `${top}px`;
-    detailBox.style.left = `${left}px`;
 }
 
 /**
@@ -130,5 +142,10 @@ export function initInteractiveSkills() {
         if (currentDetailBox && !currentDetailBox.contains(event.target)) {
             hideCurrentSkillDetail();
         }
+    });
+
+    // Add a resize listener to close the box when the window is resized
+    window.addEventListener('resize', () => {
+        hideCurrentSkillDetail();
     });
 }

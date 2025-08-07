@@ -105,3 +105,17 @@
     font-size: 0.8rem;
     font-weight: 500;
 }
+
+@media (max-width: 768px) {
+    .project-image img {
+        height: 250px; /* Reduce image height on smaller screens */
+    }
+
+    .project-content {
+        text-align: center; /* Center the text content */
+    }
+
+    .project-tech {
+        justify-content: center; /* Center the flex items (tags) */
+    }
+}

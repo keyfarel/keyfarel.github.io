@@ -7,7 +7,7 @@ export function renderProjects() {
     const projectsHTML = projectData.projects.map(project => `
         <div class="project-card reveal reveal-zoom">
             <div class="project-image">
-                <img src="${project.imageUrl}" alt="${project.title}">
+                <img src="${project.imageUrl}" alt="${project.imageAlt}">
                 <div class="project-overlay">
                     <div class="project-links">
                         <a href="${project.liveUrl}" target="_blank" class="project-link" aria-label="View Live Site"><i class="fas fa-eye"></i></a>

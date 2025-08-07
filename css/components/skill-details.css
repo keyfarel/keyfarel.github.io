@@ -99,3 +99,69 @@
     font-size: 0.95rem;
     line-height: 1.5;
 }
+
+/* ===================================
+   Responsive (Mobile)
+=================================== */
+@media (max-width: 768px) {
+    .skill-detail-box {
+        position: fixed; /* Fixed position relative to the viewport */
+        top: 50%; /* Position it at the vertical center */
+        left: 50%;
+        width: 90vw; /* Use viewport width */
+        max-width: 400px; /* Add a max-width to avoid it being too wide */
+        z-index: 100; /* Ensure it's on top of other content */
+
+        /* Combine centering with initial translateY for animation */
+        transform: translate(-50%, -50%) translateY(15px);
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        
+        /* Flexbox for internal layout on mobile */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; /* Distribute space evenly */
+        align-items: center; /* Center items horizontally */
+        text-align: center; /* Center text */
+    }
+
+    .skill-detail-box.visible {
+        opacity: 1;
+        /* Combine centering with final translateY for animation */
+        transform: translate(-50%, -50%) translateY(0);
+    }
+
+    /* Hide the arrow on mobile as it doesn't make sense with the new position */
+    .skill-detail-box::before {
+        display: none;
+    }
+
+    /* New styles for structured content */
+    .skill-detail-section {
+        width: 100%; /* Take full width */
+        margin-bottom: 10px; /* Spacing between sections */
+    }
+
+    .skill-detail-section:last-child {
+        margin-bottom: 0; /* No margin for the last section */
+    }
+
+    .skill-detail-tech h4 {
+        font-size: 1.3rem; /* Larger font for tech name */
+        margin-bottom: 5px;
+    }
+
+    .skill-detail-level-section .skill-detail-level {
+        font-size: 0.9rem; /* Adjust level font size */
+        padding: 5px 10px;
+    }
+
+    .skill-detail-bar-section .progress-bar {
+        height: 10px; /* Slightly taller progress bar */
+    }
+
+    .skill-detail-description-section .skill-detail-description {
+        font-size: 0.9rem; /* Adjust description font size */
+        line-height: 1.4;
+    }
+}

@@ -22,7 +22,7 @@ export function renderAboutSection() {
                     </div>
                 </div>
                 <div class="about-image about-image-col reveal reveal-right">
-                    <img src="${aboutData.imageUrl}" alt="About Me Image">
+                    <img src="${aboutData.imageUrl}" alt="${aboutData.imageAlt}">
                 </div>
             </div>
         </div>

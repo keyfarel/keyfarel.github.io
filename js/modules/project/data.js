@@ -7,6 +7,7 @@ export const projectData = {
             title: 'Project One',
             description: 'A brief description of Project One, highlighting its main features and the technologies used.',
             imageUrl: 'assets/placeholder/placeholder.svg',
+            imageAlt: 'Placeholder image for Project One',
             liveUrl: '#',
             repoUrl: '#',
             tech: ['HTML', 'CSS', 'JavaScript']
@@ -15,6 +16,7 @@ export const projectData = {
             title: 'Project Two',
             description: 'A brief description of Project Two, highlighting its main features and the technologies used.',
             imageUrl: 'assets/placeholder/placeholder.svg',
+            imageAlt: 'Placeholder image for Project Two',
             liveUrl: '#',
             repoUrl: '#',
             tech: ['React', 'Node.js', 'Express']
@@ -23,6 +25,7 @@ export const projectData = {
             title: 'Project Three',
             description: 'A brief description of Project Three, highlighting its main features and the technologies used.',
             imageUrl: 'assets/placeholder/placeholder.svg',
+            imageAlt: 'Placeholder image for Project Three',
             liveUrl: '#',
             repoUrl: '#',
             tech: ['Vue', 'Firebase', 'SCSS']

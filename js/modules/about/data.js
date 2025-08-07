@@ -18,4 +18,5 @@ export const aboutData = {
         }
     ],
     imageUrl: `assets/placeholder/placeholder.svg`,
+    imageAlt: 'A placeholder image representing Key Firdausi Alfarel'
 };
