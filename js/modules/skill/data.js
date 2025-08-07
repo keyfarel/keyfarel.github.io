@@ -8,6 +8,8 @@ export const skillsData = {
       items: [
         { icon: "devicon-html5-plain colored", name: "HTML5", level: "Advanced", percentage: 95, description: "Building semantic, accessible, and SEO-friendly web structures." },
         { icon: "devicon-css3-plain colored", name: "CSS3", level: "Advanced", percentage: 90, description: "Designing responsive layouts (Flexbox/Grid) and modern animations." },
+        { icon: "devicon-bootstrap-plain colored", name: "Bootstrap", level: "Intermediate", percentage: 75, description: "Rapidly developing responsive websites with a proven and extensive component library." },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", level: "Intermediate", percentage: 70, description: "Building custom designs without leaving your HTML using a utility-first CSS framework." },
         { icon: "devicon-javascript-plain colored", name: "JavaScript", level: "Advanced", percentage: 85, description: "Implementing interactive logic, DOM manipulation, and ES6+ features." },
         { icon: "devicon-react-original colored", name: "React", level: "Intermediate", percentage: 70, description: "Building Single Page Applications (SPAs) with functional components." },
         { icon: "devicon-vuejs-plain colored", name: "Vue.js", level: "Basic", percentage: 40, description: "Understanding the basics of Vue to create reactive and modular UIs." }
@@ -21,7 +23,7 @@ export const skillsData = {
         { icon: "devicon-mysql-plain colored", name: "MySQL", level: "Advanced", percentage: 90, description: "Designing and managing efficient relational database schemas." },
         { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", level: "Intermediate", percentage: 70, description: "A powerful alternative to MySQL with support for advanced features." },
         { icon: "devicon-php-plain colored", name: "PHP", level: "Intermediate", percentage: 60, description: "Experience with popular CMS and the basics of the Laravel framework." },
-        { icon: "devicon-laravel-plain colored", name: "Laravel", level: "Intermediate", percentage: 65, description: "Accelerating backend development with its rich ecosystem and features." },
+        { icon: "devicon-laravel-plain colored", name: "Laravel", level: "Intermediate", percentage: 65, description: "Building full-stack web applications and RESTful APIs with Laravel's rich ecosystem, including templating with Blade." },
         { icon: "devicon-express-original colored", name: "Express.js", level: "Intermediate", percentage: 70, description: "A minimalist framework for building APIs and web applications with Node.js." }
       ]
     },

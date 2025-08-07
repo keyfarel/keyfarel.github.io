@@ -111,6 +111,7 @@
 .skill-detail-description {
     font-size: 0.95rem;
     line-height: 1.5;
+    margin-top: 15px; /* Added spacing */
 }
 
 /* ===================================
