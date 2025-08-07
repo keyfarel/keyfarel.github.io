@@ -8,9 +8,11 @@ export function renderHeroSection() {
         <div class="hero-background"></div>
         <div class="container hero-container">
             <div class="hero-content">
-                <h1 class="hero-title animate-on-load">${heroData.title}</h1>
-                <p class="hero-subtitle animate-on-load">${heroData.subtitle_prefix}<span class="highlight-role">${heroData.subtitle_role}</span><span id="typing-effect"></span></p>
-                <p class="hero-description animate-on-load">${heroData.description}</p>
+                <div class="hero-text-content">
+                    <h1 class="hero-title animate-on-load">${heroData.title}</h1>
+                    <p class="hero-subtitle animate-on-load">${heroData.subtitle_prefix}<span class="highlight-role">${heroData.subtitle_role}</span><span id="typing-effect"></span></p>
+                    <p class="hero-description animate-on-load">${heroData.description}</p>
+                </div>
                 <div class="hero-buttons animate-on-load">
                     <a href="${heroData.primary_button.link}" class="btn btn-primary">${heroData.primary_button.text}</a>
                     <a href="${heroData.secondary_button.link}" class="btn btn-secondary">${heroData.secondary_button.text}</a>

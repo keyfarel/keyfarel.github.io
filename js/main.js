@@ -8,7 +8,7 @@ import { initCounters } from './counter.js';
 import { initInteractiveSkills } from './skills.js';
 import { initTypingEffect } from './typing.js';
 import { initParallaxEffect } from './parallax.js';
-import { initHeroAnimation } from './hero-animation.js';
+import { initHeroAnimation } from './modules/hero/hero-animation.js';
 import { initRenderModules } from './modules/render.js';
 
 // Function to handle the preloader

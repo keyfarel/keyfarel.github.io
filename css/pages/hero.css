@@ -139,22 +139,45 @@
 @media (max-width: 768px) {
     .hero {
         padding-top: 150px;
-        padding-bottom: 200px; /* ADDED: To ensure enough scroll space */
+        padding-bottom: 300px;
         box-sizing: border-box;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* This makes .hero-text-content and .hero-buttons direct flex items of .hero-container */
+    .hero-content {
+        display: contents;
+    }
+
+    .hero-text-content {
+        order: 1; /* Text */
+    }
+
+    .hero-image {
+        order: 2; /* Image */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+        order: 3; /* Buttons */
+        justify-content: center; /* Center buttons since they are now a flex item */
     }
 
     .hero-title {
         font-size: 2.5rem;
     }
 
-    .hero-buttons {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .image-placeholder {
         width: 200px;
         height: 200px;
+        margin: 0 auto;
     }
 
     .image-placeholder i {

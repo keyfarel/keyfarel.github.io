@@ -88,11 +88,24 @@
 }
 
 .progress-bar-inner {
-    width: 0; /* Starts at 0, width will be set by JS */
+    width: 0; /* Start at 0 for animation */
     height: 100%;
     background: linear-gradient(90deg, #667eea, #764ba2);
     border-radius: 4px;
     transition: width 0.8s ease-out; /* Smooth animation */
+}
+
+/* Skill Level Widths */
+.progress-bar-inner.level-basic {
+    width: 30%;
+}
+
+.progress-bar-inner.level-intermediate {
+    width: 60%;
+}
+
+.progress-bar-inner.level-advanced {
+    width: 100%;
 }
 
 .skill-detail-description {
@@ -101,67 +114,116 @@
 }
 
 /* ===================================
-   Responsive (Mobile)
+   Responsive (Mobile) - Full-Screen Modal Style
 =================================== */
 @media (max-width: 768px) {
-    .skill-detail-box {
-        position: fixed; /* Fixed position relative to the viewport */
-        top: 50%; /* Position it at the vertical center */
-        left: 50%;
-        width: 90vw; /* Use viewport width */
-        max-width: 400px; /* Add a max-width to avoid it being too wide */
-        z-index: 100; /* Ensure it's on top of other content */
-
-        /* Combine centering with initial translateY for animation */
-        transform: translate(-50%, -50%) translateY(15px);
+    /* Overlay for the background with Blur Effect */
+    .skill-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        z-index: 99;
         opacity: 0;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        
-        /* Flexbox for internal layout on mobile */
+        transition: opacity 0.3s ease;
+    }
+
+    .skill-overlay.visible {
+        opacity: 1;
+    }
+
+    /* Full-Screen Modal Container */
+    .skill-detail-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        z-index: 100;
+        padding: 20px;
+        background-color: var(--bg-secondary-translucent, rgba(30, 30, 40, 0.85));
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(100%);
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         display: flex;
         flex-direction: column;
-        justify-content: space-around; /* Distribute space evenly */
-        align-items: center; /* Center items horizontally */
-        text-align: center; /* Center text */
+        align-items: center;
+        justify-content: center; /* Center content vertically */
+        text-align: center;
+        overflow-y: auto; /* Allow scrolling for smaller screens */
     }
 
     .skill-detail-box.visible {
-        opacity: 1;
-        /* Combine centering with final translateY for animation */
-        transform: translate(-50%, -50%) translateY(0);
+        transform: translateY(0);
     }
 
-    /* Hide the arrow on mobile as it doesn't make sense with the new position */
     .skill-detail-box::before {
         display: none;
     }
 
-    /* New styles for structured content */
-    .skill-detail-section {
-        width: 100%; /* Take full width */
-        margin-bottom: 10px; /* Spacing between sections */
+    /* Close Button */
+    .close-skill-detail {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 2.5rem;
+        color: var(--text-primary);
+        cursor: pointer;
+        line-height: 1;
+        z-index: 101;
     }
 
-    .skill-detail-section:last-child {
-        margin-bottom: 0; /* No margin for the last section */
+    /* Centered Icon */
+    .skill-detail-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: var(--bg-primary);
+        border: 2px solid var(--border-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
     }
 
-    .skill-detail-tech h4 {
-        font-size: 1.3rem; /* Larger font for tech name */
-        margin-bottom: 5px;
+    .skill-detail-icon i {
+        font-size: 3rem;
+        color: var(--accent-primary);
     }
 
-    .skill-detail-level-section .skill-detail-level {
-        font-size: 0.9rem; /* Adjust level font size */
-        padding: 5px 10px;
+    /* Content Layout */
+    .skill-detail-header {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .skill-detail-bar-section .progress-bar {
-        height: 10px; /* Slightly taller progress bar */
+    .skill-detail-header h4 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
     }
 
-    .skill-detail-description-section .skill-detail-description {
-        font-size: 0.9rem; /* Adjust description font size */
-        line-height: 1.4;
+    .progress-bar {
+        height: 10px;
+        width: 100%;
+        max-width: 300px; /* Constrain bar width */
+    }
+
+    .skill-detail-description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-top: 15px;
+        max-width: 400px; /* Constrain text width */
     }
 }
