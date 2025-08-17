@@ -12,4 +12,6 @@ export const heroData = {
         link: "#contact"
     },
     icon: "fas fa-code"
+
+    // icon: "assets/icon-images/dark-mode-icon.png"
 };

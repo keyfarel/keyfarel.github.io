@@ -1,0 +1,194 @@
+function e(e,t){let a=e.value.length,i=document.getElementById(`${e.id}-char-count`);i&&(i.textContent=`${a}/${t}`,a>t?i.style.color="#dc3545":i.style.color="")}function t(e,t){let a=document.getElementById(`${e}-error`);a&&(a.textContent=t,a.style.display="block");let i=document.getElementById(e);i&&i.classList.add("input-error")}function a(e,t){let a=document.getElementById("form-notification"),i=document.getElementById("notification-message"),n=document.getElementById("notification-close");a&&i&&n&&(i.textContent=e,a.className=`form-notification ${t}`,a.classList.add("show"),a.scrollIntoView({behavior:"smooth",block:"center"}),setTimeout(()=>{n.focus()},150))}function i(){let e=document.getElementById("form-notification");e&&e.classList.remove("show")}const n=[{name:"Frontend",items:[{icon:"devicon-html5-plain colored",name:"HTML5",level:"Advanced",percentage:95,description:"Building semantic, accessible, and SEO-friendly web structures."},{icon:"devicon-css3-plain colored",name:"CSS3",level:"Advanced",percentage:90,description:"Designing responsive layouts (Flexbox/Grid) and modern animations."},{icon:"devicon-bootstrap-plain colored",name:"Bootstrap",level:"Intermediate",percentage:75,description:"Rapidly developing responsive websites with a proven and extensive component library."},{icon:"devicon-tailwindcss-plain colored",name:"TailwindCSS",level:"Intermediate",percentage:70,description:"Building custom designs without leaving your HTML using a utility-first CSS framework."},{icon:"devicon-javascript-plain colored",name:"JavaScript",level:"Advanced",percentage:85,description:"Implementing interactive logic, DOM manipulation, and ES6+ features."},{icon:"devicon-react-original colored",name:"React",level:"Intermediate",percentage:70,description:"Building Single Page Applications (SPAs) with functional components."},{icon:"devicon-vuejs-plain colored",name:"Vue.js",level:"Basic",percentage:40,description:"Understanding the basics of Vue to create reactive and modular UIs."}]},{name:"Backend",items:[{icon:"devicon-nodejs-plain colored",name:"Node.js",level:"Intermediate",percentage:75,description:"Building server-side applications and RESTful APIs using Express."},{icon:"devicon-python-plain colored",name:"Python",level:"Intermediate",percentage:65,description:"Used for scripting, automation, and basic web development."},{icon:"devicon-mysql-plain colored",name:"MySQL",level:"Advanced",percentage:90,description:"Designing and managing efficient relational database schemas."},{icon:"devicon-postgresql-plain colored",name:"PostgreSQL",level:"Intermediate",percentage:70,description:"A powerful alternative to MySQL with support for advanced features."},{icon:"devicon-php-plain colored",name:"PHP",level:"Intermediate",percentage:60,description:"Experience with popular CMS and the basics of the Laravel framework."},{icon:"devicon-laravel-plain colored",name:"Laravel",level:"Intermediate",percentage:65,description:"Building full-stack web applications and RESTful APIs with Laravel's rich ecosystem, including templating with Blade."},{icon:"devicon-express-original colored",name:"Express.js",level:"Intermediate",percentage:70,description:"A minimalist framework for building APIs and web applications with Node.js."}]},{name:"Tools",items:[{icon:"devicon-git-plain colored",name:"Git",level:"Advanced",percentage:95,description:"Version control system for team collaboration and efficient code management."},{icon:"devicon-docker-plain colored",name:"Docker",level:"Intermediate",percentage:70,description:"Creating containers for consistent development and deployment environments."},{icon:"devicon-figma-plain colored",name:"Figma",level:"Advanced",percentage:85,description:"Designing user interfaces (UI) and interactive prototypes."},{icon:"devicon-vscode-plain colored",name:"VS Code",level:"Advanced",percentage:95,description:"Primary code editor with customizations and extensions for productivity."},{icon:"fas fa-terminal",name:"Terminal",level:"Advanced",percentage:90,description:"Using the CLI for navigation, script automation, and system management."}]}];let s=null,o=null,l=null;function r(){let e=document.getElementById("navbar");if(e&&e.classList.remove("navbar-hidden"),l){let e=l;e.classList.remove("visible"),e.addEventListener("transitionend",()=>{e.parentNode&&e.remove()},{once:!0})}if(s){let e=s;e.classList.remove("visible"),e.addEventListener("transitionend",()=>{e.parentNode&&e.remove()},{once:!0})}s=null,o=null,l=null}const c="View My Work",d="#project",m="Contact Me",p="#contact",v=[{value:2,label:"Years of Experience"},{value:10,label:"Completed Projects"},{value:5,label:"Happy Clients"}],u=[{title:"Personal Portfolio",description:"A personal portfolio website showcasing profile, skills, featured projects, and contact information in a clean and responsive design. Built with HTML, CSS, and JavaScript, it delivers a smooth user experience with lightweight performance and modern UI touches.",imageUrl:"assets/project-images/project-1.png",imageAlt:"Placeholder image for Project One",repoUrl:"https://github.com/keyfarel/keyfarel.github.io",tech:["HTML","CSS","JavaScript"]},{title:"Project Two",description:"A brief description of Project Two, highlighting its main features and the technologies used.",imageUrl:"assets/placeholder/placeholder.svg",imageAlt:"Placeholder image for Project Two",repoUrl:"#",tech:["React","Node.js","Express"]},{title:"Project Three",description:"A brief description of Project Three, highlighting its main features and the technologies used.",imageUrl:"assets/placeholder/placeholder.svg",imageAlt:"Placeholder image for Project Three",liveUrl:"#",repoUrl:"#",tech:["Vue","Firebase","SCSS"]}],g="Let's work together!",h="I'm always interested in new opportunities and exciting project. Whether you have a question or just want to say hi, feel free to reach out!",f=[{icon:"fas fa-envelope",text:"keyfarel645@gmail.com",link:"mailto:keyfarel645@gmail.com"},{icon:"fas fa-phone",text:"+62 815-4731-8665",link:"tel:+6281547318665"},{icon:"fas fa-map-marker-alt",text:"Malang, Jawa Timur, Indonesia",link:"https://maps.app.goo.gl/cZEHe3yXUASn3d356"}],y=[{icon:"fab fa-linkedin",url:"https://linkedin.com/in/key-firdausi-alfarel-566616290"},{icon:"fab fa-github",url:"https://github.com/keyfarel"},{icon:"fab fa-twitter",url:"#"},{icon:"fab fa-instagram",url:"https://www.instagram.com/farel_key05"}],b="Portfolio",w="#hero",k=[{text:"Home",url:"#hero"},{text:"About",url:"#about"},{text:"Skills",url:"#skill"},{text:"Projects",url:"#project"},{text:"Contact",url:"#contact"}];async function L(){try{!function(){let e=document.getElementById("navbar");if(!e)return;let t=k.map(e=>`
+    <a href="${e.url}" class="nav-link">${e.text}</a>
+  `).join("");e.innerHTML=`
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="${w}">${b}</a>
+      </div>
+      <div class="nav-menu" id="nav-menu">
+        ${t}
+      </div>
+      <div class="nav-toggle" id="nav-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  `}();let L=document.getElementById("hero");L&&(L.innerHTML=`
+        <div class="hero-background"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-text-content">
+                    <h1 class="hero-title animate-on-load">Hi, I'm Key Farel</h1>
+                    <p class="hero-subtitle animate-on-load">I'm a <span class="highlight-role">Fullstack Web Developer</span><span id="typing-effect"></span></p>
+                    <p class="hero-description animate-on-load">I build modern, responsive, and engaging web experiences from front to back. Let's create something amazing together.</p>
+                </div>
+                <div class="hero-buttons animate-on-load">
+                    <a href="${d}" class="btn btn-primary">${c}</a>
+                    <a href="${p}" class="btn btn-secondary">${m}</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder animate-on-load">
+                    <i class="fas fa-code"></i>
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </a>
+    `),function(){let e=document.getElementById("about");if(!e)return;let t=v.map(e=>`
+        <div class="stat">
+            <h3 class="counter" data-target="${e.value}">0</h3>
+            <p>${e.label}</p>
+        </div>
+    `).join("");e.innerHTML=`
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">About Me</h2>
+            <div class="about-content">
+                <div class="about-text reveal reveal-left">
+                    <p>Hello! I'm Key, a passionate and detail-oriented developer with a love for creating elegant and efficient solutions. My journey in the world of programming began with a curiosity for how things work, and it has since evolved into a full-fledged passion for building beautiful and functional web applications.</p>
+                    <div class="about-stats">
+                        ${t}
+                    </div>
+                </div>
+                <div class="about-image about-image-col reveal reveal-right">
+                    <img src="${{}}" alt="A placeholder image representing Key Firdausi Alfarel">
+                </div>
+            </div>
+        </div>
+    `}(),function(){let e=document.getElementById("skill");if(!e)return;let t=n.map(e=>{let t=e.items.map(e=>`
+      <div class="skill-item">
+        <i class="${e.icon}"></i>
+        <span>${e.name}</span>
+      </div>
+    `).join("");return`
+      <div class="skill-category reveal reveal-up">
+        <h3>${e.name}</h3>
+        <div class="skill-items">
+          ${t}
+        </div>
+      </div>
+    `}).join("");e.innerHTML=`
+    <div class="container">
+      <h2 class="section-title reveal reveal-up">Skills & Technologies</h2>
+      <div class="skills-grid reveal reveal-stagger">
+        ${t}
+      </div>
+    </div>
+  `}(),function(){let e=document.getElementById("project");if(!e)return;let t={"assets/project-images/project-1.png":{},"assets/placeholder/placeholder.svg":{}},a=u.map(e=>{let a=t[e.imageUrl]||e.imageUrl;return`
+        <div class="project-card reveal reveal-zoom">
+            <div class="project-image">
+                <img src="${a}" alt="${e.imageAlt}">
+                <div class="project-overlay">
+                    <div class="project-links">
+                        ${e.liveUrl?`<a href="${e.liveUrl}" target="_blank" class="project-link" aria-label="View Live Site"><i class="fas fa-eye"></i></a>`:""}
+                        <a href="${e.repoUrl}" target="_blank" class="project-link" aria-label="View Repository"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <h3>${e.title}</h3>
+                <p>${e.description}</p>
+                <div class="project-tech">
+                    ${e.tech.map(e=>`<span>${e}</span>`).join("")}
+                </div>
+            </div>
+        </div>
+    `}).join("");e.innerHTML=`
+        <div class="parallax-bg" data-parallax-speed="0.5"></div>
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">Featured Projects</h2>
+            <div class="projects-grid reveal reveal-stagger">
+                ${a}
+            </div>
+        </div>
+    `}(),function(){let e=document.getElementById("contact");if(!e)return;let t=f.map(e=>`
+    <div class="contact-item">
+      <i class="${e.icon}"></i>
+      <a href="${e.link}">${e.text}</a>
+    </div>
+  `).join(""),a=y.map(e=>`
+    <a href="${e.url}" target="_blank" rel="noopener noreferrer" class="social-link">
+      <i class="${e.icon}"></i>
+    </a>
+  `).join("");e.innerHTML=`
+    <div class="container">
+      <h2 class="section-title reveal reveal-up">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info reveal reveal-left">
+          <h3>${g}</h3>
+          <p>${h}</p>
+          <div class="contact-details">
+            ${t}
+          </div>
+          <div class="social-links">
+            ${a}
+          </div>
+        </div>
+        <form action="https://formspree.io/f/myzpnplp" method="POST" class="contact-form reveal reveal-right" id="contact-form" novalidate>
+          <div id="form-notification" class="form-notification" tabindex="-1" aria-live="assertive">
+            <span id="notification-message"></span>
+            <button type="button" id="notification-close" class="notification-close" aria-label="Close">&times;</button>
+          </div>
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <div class="validation-feedback">
+              <span class="error-message" id="name-error"></span>
+              <span class="char-count" id="name-char-count">0/50</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <div class="validation-feedback">
+              <span class="error-message" id="email-error"></span>
+              <span class="char-count" id="email-char-count">0/100</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+            <div class="validation-feedback">
+              <span class="error-message" id="subject-error"></span>
+              <span class="char-count" id="subject-char-count">0/100</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            <div class="validation-feedback">
+              <span class="error-message" id="message-error"></span>
+              <span class="char-count" id="message-char-count">0/500</span>
+            </div>
+          </div>
+          <div id="form-notification" class="form-notification"></div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  `}(),function(){let e=document.getElementById("main-footer");if(!e)return;let t=new Date().getFullYear();e.innerHTML=`
+    <div class="container">
+      <p>&copy; ${t} Key Firdausi Alfarel. All rights reserved.</p>
+    </div>
+  `}();let E=document.getElementById("nav-toggle"),x=document.getElementById("nav-menu");E.addEventListener("click",()=>{x.classList.toggle("active"),E.classList.toggle("active")}),document.querySelectorAll(".nav-link").forEach(e=>{e.addEventListener("click",()=>{x.classList.remove("active"),E.classList.remove("active")})}),document.getElementById("navbar").classList.add("scrolled"),function(){let e,t=document.querySelectorAll("section[id]"),a=document.querySelectorAll(".nav-link"),i=!1;a.forEach(t=>{t.addEventListener("click",()=>{i=!0,a.forEach(e=>e.classList.remove("active")),t.classList.add("active"),clearTimeout(e),e=setTimeout(()=>{i=!1},1e3)})});let n=new IntersectionObserver(e=>{if(!i){if(window.scrollY<50)return void a.forEach(e=>{e.classList.remove("active"),"#hero"===e.getAttribute("href")&&e.classList.add("active")});e.forEach(e=>{if(e.isIntersecting){let t=e.target.getAttribute("id");a.forEach(e=>{e.classList.remove("active"),e.getAttribute("href")===`#${t}`&&e.classList.add("active")})}})}},{rootMargin:"-50% 0px -50% 0px",threshold:0});t.forEach(e=>{n.observe(e)})}(),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();let t=document.querySelector(this.getAttribute("href"));if(t){let e=t.offsetTop-70;window.scrollTo({top:e,behavior:"smooth"})}})});let S=new IntersectionObserver((e,t)=>{e.forEach(e=>{if(e.isIntersecting){let a=e.target;a.classList.add("visible"),a.classList.contains("reveal-stagger")&&a.querySelectorAll(".reveal").forEach((e,t)=>{e.style.transitionDelay=`${200*t}ms`}),t.unobserve(a)}})},{threshold:.1,rootMargin:"0px 0px -50px 0px"});document.querySelectorAll(".reveal").forEach(e=>{S.observe(e)}),function(){let n=document.getElementById("contact-form");if(!n)return;n.addEventListener("submit",i=>{var s;i.preventDefault(),document.querySelectorAll(".error-message").forEach(e=>{e.textContent="",e.style.display="none"}),document.querySelectorAll(".input-error").forEach(e=>{e.classList.remove("input-error")});let o=n.querySelector("#name").value,l=n.querySelector("#email").value,r=n.querySelector("#subject").value,c=n.querySelector("#message").value,d=!0;if(o?o.length<2?(t("name","Name must be at least 2 characters long."),d=!1):o.length>50?(t("name","Name cannot exceed 50 characters."),d=!1):/^[a-zA-Z\s]+$/.test(o)||(t("name","Name can only contain letters and spaces."),d=!1):(t("name","Name is required."),d=!1),l?(s=l,/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s))?l.length>100&&(t("email","Email cannot exceed 100 characters."),d=!1):(t("email","Please enter a valid email address."),d=!1):(t("email","Email is required."),d=!1),r?r.length<5?(t("subject","Subject must be at least 5 characters long."),d=!1):r.length>100&&(t("subject","Subject cannot exceed 100 characters."),d=!1):(t("subject","Subject is required."),d=!1),c?c.length<10?(t("message","Message must be at least 10 characters long."),d=!1):c.length>500&&(t("message","Message cannot exceed 500 characters."),d=!1):(t("message","Message is required."),d=!1),d){let t=n.querySelector('button[type="submit"]');t&&(t.disabled=!0,t.classList.add("loading"));let i=new FormData(n);fetch(n.action,{method:"POST",body:i,headers:{Accept:"application/json"}}).then(i=>{t&&(t.disabled=!1,t.classList.remove("loading")),setTimeout(()=>{i.ok?(a("Message sent successfully! I will get back to you soon.","success"),n.reset(),n.querySelectorAll("input, textarea").forEach(t=>{let a=parseInt(t.dataset.maxLength||("name"===t.id?50:"email"===t.id||"subject"===t.id?100:500));e(t,a)})):i.json().then(e=>{e&&e.errors?e.errors.some(e=>e.message&&e.message.toLowerCase().includes("inactive"))?a("Maaf, batas pengiriman formulir untuk bulan ini telah tercapai.","error"):a(e.errors.map(e=>e.message).join(", "),"error"):a("Oops! Terjadi masalah saat mengirim formulir Anda.","error")})},100)}).catch(e=>{t&&(t.disabled=!1,t.classList.remove("loading")),setTimeout(()=>{a("Oops! There was a network error.","error")},100)})}else{let e=n.querySelector(".input-error");e&&(e.scrollIntoView({behavior:"smooth",block:"center"}),e.focus())}}),n.querySelectorAll("input, textarea").forEach(t=>{let a=parseInt(t.dataset.maxLength||("name"===t.id?50:"email"===t.id||"subject"===t.id?100:500));e(t,a),t.addEventListener("input",()=>{i();let n=t.id,s=document.getElementById(`${n}-error`);s&&s.textContent&&function(e){let t=document.getElementById(`${e}-error`);t&&(t.textContent="",t.style.display="none");let a=document.getElementById(e);a&&a.classList.remove("input-error")}(n),"name"===t.id&&(t.value=t.value.replace(/[^a-zA-Z\s]/g,"")),t.value.length>a&&(t.value=t.value.substring(0,a)),e(t,a)})});let s=document.getElementById("notification-close");s&&s.addEventListener("click",i)}(),window.addEventListener("scroll",()=>{document.querySelectorAll(".stat h3").forEach(e=>{let t=e.getBoundingClientRect();if(t.top<window.innerHeight&&t.bottom>0&&!e.classList.contains("animated")){e.classList.add("animated");let t=parseInt(e.textContent),a=0,i=t/50,n=()=>{a<t?(e.textContent=Math.ceil(a+=i)+"+",requestAnimationFrame(n)):e.textContent=t+"+"};n()}})});let j=document.getElementById("skill");j&&(j.addEventListener("click",e=>{let t=e.target.closest(".skill-item");t&&(e.stopPropagation(),function(e){if(e===o)return r();s&&r();let t=document.getElementById("navbar"),a=e.closest(".skill-category").querySelector("h3").textContent,i=e.querySelector("span").textContent,c=n.find(e=>e.name===a).items.find(e=>e.name===i);if(!c)return;if(t&&window.innerWidth<=768&&t.classList.add("navbar-hidden"),window.innerWidth<=768){let e=document.createElement("div");e.className="skill-overlay",document.body.appendChild(e),l=e,e.addEventListener("click",r)}let d=document.createElement("div");d.className="skill-detail-box",window.innerWidth<=768?(d.innerHTML=`
+            <button class="close-skill-detail">&times;</button>
+            <div class="skill-detail-icon">
+                <i class="${c.icon}"></i>
+            </div>
+            <div class="skill-detail-header">
+                <h4>${c.name}</h4>
+                <span class="skill-detail-level">${c.level}</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-inner"></div>
+            </div>
+            <p class="skill-detail-description">${c.description}</p>
+        `,d.querySelector(".close-skill-detail").addEventListener("click",r)):d.innerHTML=`
+            <div class="skill-detail-header">
+                <h4>${c.name}</h4>
+                <span class="skill-detail-level">${c.level}</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-inner"></div>
+            </div>
+            <p class="skill-detail-description">${c.description}</p>
+        `,document.body.appendChild(d),window.innerWidth>768&&function(e,t){if(window.innerWidth>768){let a=e.getBoundingClientRect(),i=document.body.getBoundingClientRect(),n=a.bottom+window.scrollY+10,s=a.left+window.scrollX+a.width/2-t.offsetWidth/2;s<10&&(s=10),s+t.offsetWidth>i.width-10&&(s=i.width-t.offsetWidth-10),t.style.top=`${n}px`,t.style.left=`${s}px`}}(e,d),requestAnimationFrame(()=>{l&&l.classList.add("visible"),d.classList.add("visible"),setTimeout(()=>{let e=d.querySelector(".progress-bar-inner");if(e){let t=`level-${c.level.toLowerCase()}`;e.classList.add(t)}},50)}),s=d,o=e,e.classList.add("clicked"),setTimeout(()=>e.classList.remove("clicked"),400)}(t))}),document.addEventListener("click",e=>{!s||s.contains(e.target)||e.target.closest(".skill-item")||r()}),window.addEventListener("resize",()=>{r()})),function(){let e=document.getElementById("typing-target");if(e){var t;let a;t=()=>{e.style.borderRight="2px solid white",setInterval(()=>{e.style.borderRightColor="transparent"===e.style.borderRightColor?"white":"transparent"},500)},a=0,e.innerHTML="",function i(){a<9?(e.innerHTML+="Key Farel".charAt(a),a++,setTimeout(i,150)):t&&t()}()}}(),function(){let e=document.getElementById("hero");if(!e)return;let t=e.querySelector(".hero-container");t&&window.addEventListener("scroll",()=>{let a=window.scrollY,i=e.offsetHeight,n=.65*i;if(a<n){t.style.opacity=1,t.style.transform="translateY(0px)";return}let s=Math.min(1,(a-n)/(i-n));t.style.opacity=Math.max(0,1-s),t.style.transform=`translateY(-${50*s}px)`})}(),function(){let e=document.querySelector(".hero-container"),t=document.querySelector(".scroll-indicator"),a=document.querySelector(".hero-background"),i=document.querySelector(".hero");e&&t&&a&&i&&window.addEventListener("scroll",()=>{let n=window.pageYOffset,s=i.offsetHeight,o=window.innerWidth<=768,l=1,r=0;if(o){r=.3*n;let e=.6*s;l=n>=e?1-(n-e)/(s-e):1}else{r=.5*n;let i=Math.max(0,1-n/(.9*s)),o=Math.max(0,1-n/(1.5*s));e.style.opacity=i,t.style.opacity=i,a.style.opacity=o,a.style.transform=`translateY(${r}px)`,e.style.transform=`translateY(${r}px)`;return}let c=Math.max(0,l);e.style.opacity=c,t.style.opacity=c,a.style.opacity=c,a.style.transform=`translateY(${r}px)`,e.style.transform=`translateY(${r}px)`},{passive:!0})}();let $=window.location.hash;if($){let e=document.querySelector($);e&&setTimeout(()=>{let t=e.offsetTop-70;window.scrollTo({top:t,behavior:"smooth"})},100)}}catch(e){console.error("Failed to initialize the application:",e)}}const E=document.querySelector(".loader-wrapper");E&&window.addEventListener("load",()=>{E.classList.add("hidden")}),document.addEventListener("DOMContentLoaded",L);
+//# sourceMappingURL=portofolio-website.97cff59f.js.map

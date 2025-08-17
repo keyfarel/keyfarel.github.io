@@ -17,6 +17,6 @@ export const aboutData = {
             label: 'Happy Clients'
         }
     ],
-    imageUrl: `assets/placeholder/placeholder.svg`,
+    imageUrl: `placeholder.2877b82e.svg`,
     imageAlt: 'A placeholder image representing Key Firdausi Alfarel'
 };

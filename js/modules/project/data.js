@@ -6,7 +6,7 @@ export const projectData = {
     {
       title: 'Personal Portfolio',
       description: 'A personal portfolio website showcasing profile, skills, featured projects, and contact information in a clean and responsive design. Built with HTML, CSS, and JavaScript, it delivers a smooth user experience with lightweight performance and modern UI touches.',
-      imageUrl: 'assets/project-images/project-1.png',
+      imageUrl: 'project-1.899dc3a6.png',
       imageAlt: 'Placeholder image for Project One',
       repoUrl: 'https://github.com/keyfarel/keyfarel.github.io',
       tech: ['HTML', 'CSS', 'JavaScript']
@@ -14,7 +14,7 @@ export const projectData = {
     {
       title: 'Project Two',
       description: 'A brief description of Project Two, highlighting its main features and the technologies used.',
-      imageUrl: 'assets/placeholder/placeholder.svg',
+      imageUrl: 'placeholder.2877b82e.svg',
       imageAlt: 'Placeholder image for Project Two',
       repoUrl: '#',
       tech: ['React', 'Node.js', 'Express']
@@ -22,7 +22,7 @@ export const projectData = {
     {
       title: 'Project Three',
       description: 'A brief description of Project Three, highlighting its main features and the technologies used.',
-      imageUrl: 'assets/placeholder/placeholder.svg',
+      imageUrl: 'placeholder.2877b82e.svg',
       imageAlt: 'Placeholder image for Project Three',
       liveUrl: '#',
       repoUrl: '#',
