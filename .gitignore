@@ -3,4 +3,4 @@ GEMINI.md
 /node_modules
 /.parcel-cache
 package.json
-package-lock.jsons
+package-lock.json
