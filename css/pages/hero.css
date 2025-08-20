@@ -18,7 +18,6 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-    /* background-attachment: fixed; // REMOVED - Causes issues on mobile */
 }
 
 .hero-container {
@@ -46,7 +45,7 @@
 }
 
 .hero-description {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 1.1rem;
     line-height: 1.6;
     color: var(--text-secondary);
@@ -135,11 +134,83 @@
    Responsive Media Queries
 =================================== */
 
-/* ========== Responsive: Tablet (max-width: 768px) ========== */
-@media (max-width: 768px) {
+/* ========== Desktop (≥993px) ========== */
+@media (min-width: 993px) {
     .hero {
-        padding-top: 150px;
-        padding-bottom: 300px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hero-description {
+        padding-bottom: 1rem;
+    }
+}
+
+/* ========== Tablet (769px – 992px) ========== */
+@media (max-width: 992px) and (min-width: 769px) {
+    .hero-title {
+        font-size: 2.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        max-width: 55ch; /* Batas panjang teks biar rapi */
+        margin-bottom: 0;
+        padding-bottom: 1.5rem;
+    }
+
+    .hero-buttons .btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Teks kiri - gambar kanan */
+        align-items: center;            /* Gambar center vertikal */
+        gap: 2rem;                      /* Jarak teks & gambar */
+    }
+
+    .hero-container {
+        flex: 1;              /* Ambil porsi kiri */
+        text-align: left;     /* Mulai dari kiri */
+    }
+
+    .hero-image {
+        flex: 1;              /* Ambil porsi kanan */
+        display: flex;
+        justify-content: center; /* Posisikan gambar di tengah kanan */
+        align-items: center;     /* Posisikan vertikal tengah */
+    }
+
+    .image-placeholder {
+        width: 220px;
+        height: 220px;
+    }
+
+    .image-placeholder i {
+        font-size: 6rem;
+    }
+}
+
+/* ========== Mobile Portrait (≤768px) ========== */
+@media (max-width: 768px) {
+    .hero-buttons .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        padding-top: 120px;
+        padding-bottom: 90px;
         box-sizing: border-box;
     }
 
@@ -150,45 +221,113 @@
         text-align: center;
     }
 
-    /* This makes .hero-text-content and .hero-buttons direct flex items of .hero-container */
     .hero-content {
         display: contents;
     }
 
     .hero-text-content {
-        order: 1; /* Text */
+        order: 1;
     }
 
     .hero-image {
-        order: 2; /* Image */
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+        order: 2;
+        margin: 1rem 0;
     }
 
     .hero-buttons {
-        order: 3; /* Buttons */
-        justify-content: center; /* Center buttons since they are now a flex item */
+        order: 3;
+        justify-content: center;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        padding-bottom: 0;
     }
 
     .image-placeholder {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         margin: 0 auto;
     }
 
     .image-placeholder i {
-        font-size: 6rem;
+        font-size: 4rem;
     }
 }
 
-/* ========== Responsive: Mobile (max-width: 480px) ========== */
+/* ========== Mobile Small (≤480px) ========== */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        padding-bottom: 0;
+    }
+
+    .hero-description {
+        margin-bottom: 0;
+    }
+
+    .hero-image {
+        margin-top: 0;
+    }
+}
+
+/* ========== Mobile Landscape (≤992px, ≥600px, height ≤500px) ========== */
+@media (max-height: 500px) and (min-width: 600px) and (max-width: 992px) {
+    .hero-buttons .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .hero {
+        min-height: auto; /* Adjust height for landscape */
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem; /* Smaller font for landscape */
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons {
+        margin-bottom: 2rem;
+    }
+
+    .hero-image {
+        margin-top: -1rem;
+    }
+
+    .image-placeholder {
+        width: 150px;
+        height: 150px;
+    }
+
+    .image-placeholder i {
+        font-size: 4rem;
     }
 }
 

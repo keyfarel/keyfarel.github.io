@@ -93,6 +93,22 @@
     transform: translateY(-9px) rotate(-45deg);
 }
 
+/* Tablet view (portrait & small landscape) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-logo a {
+        font-size: 1.3rem;
+    }
+
+    .nav-menu {
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+    }
+}
+
+
 /* Responsive Navigation */
 @media (max-width: 768px) {
     .nav-toggle {

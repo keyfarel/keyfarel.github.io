@@ -110,6 +110,34 @@ section {
 }
 
 /* Responsive Layout Adjustments */
+@media (max-width: 992px) {
+    .hero-container {
+        gap: 2rem;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-image-col {
+        justify-self: center;
+    }
+
+    .about-text-col {
+        text-align: center;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     section {
         padding: 60px 0; /* Reduced padding for mobile */
@@ -160,5 +188,12 @@ section {
 @media (max-width: 480px) {
     .container {
         padding: 0 15px;
+    }
+}
+
+/* ========== Responsive: Mobile Landscape ========== */
+@media (max-height: 500px) and (min-width: 600px) and (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
     }
 }
